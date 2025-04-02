@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 export const metadata = {
   title: "My Event",
   description: "A simple two-page site for my event",
-    generator: 'v0.dev'
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -20,11 +20,13 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <div className="flex flex-col min-h-screen">
             <SiteHeader />
-            <main className="flex-1">
-              {children}
+            <main className="flex-1 flex flex-col">
+              <div className="container max-w-5xl mx-auto flex-1 flex flex-col items-center justify-center px-4 md:px-6 space-y-12 py-8 text-center">
+                {children}
+              </div>
             </main>
-            <footer className="w-full border-t py-6">
-              <div className="container flex justify-center">
+            <footer className="w-full border-t py-4">
+              <div className="container max-w-5xl mx-auto flex justify-center">
                 <p className="text-sm text-muted-foreground">
                   © {new Date().getFullYear()} Hare Aum
                 </p>
