@@ -16,15 +16,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body className="min-h-screen flex flex-col">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <div className="relative flex min-h-screen flex-col">
+          <div className="flex flex-col min-h-screen">
             <SiteHeader />
-            {children}
-            <footer className="border-t py-6 md:py-0">
-              <div className="container flex flex-col items-center justify-between gap-4 md:h-16 md:flex-row">
-                <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
-                  © {new Date().getFullYear()} My Event. All rights reserved.
+            <main className="flex-1">
+              {children}
+            </main>
+            <footer className="w-full border-t py-6">
+              <div className="container flex justify-center">
+                <p className="text-sm text-muted-foreground">
+                  © {new Date().getFullYear()} Hare Aum
                 </p>
               </div>
             </footer>

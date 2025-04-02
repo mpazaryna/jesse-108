@@ -1,8 +1,7 @@
 import { getInstructorById } from '@/lib/instructors'
-import { Button } from '@/components/ui/button'
-import { StudioLink } from '@/components/studio-link'
-import Link from 'next/link'
+import { ProfileDetail } from '@/components/profile-detail'
 import { notFound } from 'next/navigation'
+import { Metadata } from 'next'
 
 interface Props {
   params: {
@@ -10,36 +9,35 @@ interface Props {
   }
 }
 
-export default async function InstructorPage({ params }: Props) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const instructor = await getInstructorById(params.id)
+  
+  if (!instructor) {
+    return {
+      title: 'Instructor Not Found'
+    }
+  }
+
+  return {
+    title: instructor.name,
+    description: instructor.blurb
+  }
+}
+
+export default async function InstructorPage({ params }: Props) {
+  const instructor = await getInstructorById(await Promise.resolve(params.id))
 
   if (!instructor) {
     notFound()
   }
 
   return (
-    <main className="flex min-h-screen flex-col">
-      <div className="container px-4 py-12 md:px-6">
-        <div className="mb-8">
-          <Button variant="outline" asChild>
-            <Link href="/instructors">← Back to Instructors</Link>
-          </Button>
-        </div>
-        
-        <article className="prose prose-lg max-w-none">
-          <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">
-            {instructor.name}
-          </h1>
-          
-          <div className="mb-8">
-            <StudioLink url={instructor.studioUrl} name={instructor.studio} />
-          </div>
-
-          <div className="mt-8">
-            {instructor.content}
-          </div>
-        </article>
-      </div>
-    </main>
+    <ProfileDetail
+      type="instructors"
+      name={instructor.name}
+      studio={instructor.studio}
+      website={instructor.studioUrl}
+      content={instructor.content}
+    />
   )
 } 

@@ -1,7 +1,5 @@
-import Link from 'next/link'
 import { getAllInstructors } from '@/lib/instructors'
-import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { StudioLink } from '@/components/studio-link'
+import { ProfileCard } from '@/components/profile-card'
 
 export default async function InstructorsPage() {
   const instructors = await getAllInstructors()
@@ -12,17 +10,13 @@ export default async function InstructorsPage() {
         <h1 className="mb-8 text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Our Instructors</h1>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {instructors.map((instructor) => (
-            <Link key={instructor.id} href={`/instructors/${instructor.id}`}>
-              <Card className="h-full transition-shadow hover:shadow-lg">
-                <CardHeader>
-                  <CardTitle>{instructor.name}</CardTitle>
-                  <div>
-                    <StudioLink url={instructor.studioUrl} name={instructor.studio} />
-                  </div>
-                  <CardDescription className="mt-2">{instructor.blurb}</CardDescription>
-                </CardHeader>
-              </Card>
-            </Link>
+            <ProfileCard
+              key={instructor.id}
+              id={instructor.id}
+              name={instructor.name}
+              description={instructor.blurb}
+              linkPath="instructors"
+            />
           ))}
         </div>
       </div>
