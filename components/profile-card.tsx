@@ -5,7 +5,7 @@ interface ProfileCardProps {
   id: string
   name: string
   description: string
-  linkPath: 'instructors' | 'sponsors'
+  linkPath: 'instructors' | 'sponsors' | 'vendors'
 }
 
 export function ProfileCard({ id, name, description, linkPath }: ProfileCardProps) {

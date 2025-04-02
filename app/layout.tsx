@@ -21,9 +21,7 @@ export default function RootLayout({
           <div className="flex flex-col min-h-screen">
             <SiteHeader />
             <main className="flex-1 flex flex-col">
-              <div className="container max-w-5xl mx-auto flex-1 flex flex-col items-center justify-center px-4 md:px-6 space-y-12 py-8 text-center">
-                {children}
-              </div>
+              {children}
             </main>
             <footer className="w-full border-t py-4">
               <div className="container max-w-5xl mx-auto flex justify-center">
