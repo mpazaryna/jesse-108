@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 import { Header } from "@/components/header"
+import { NavigationMenu } from "@/components/ui/navigation-menu"
 
 export const metadata: Metadata = {
   title: "Jesse 108",
@@ -7,12 +8,14 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
-  const showHeader = process.env.NEXT_PUBLIC_SHOW_HEADER === 'true'
+  // Using Boolean() to properly convert the string to a boolean
+  const showNavigation = Boolean(process.env.NEXT_PUBLIC_SHOW_NAVIGATION)
 
   return (
     <div className="container max-w-5xl mx-auto flex-1 flex flex-col items-center justify-center px-4 md:px-6 space-y-12 py-8">
       <div className="text-center">
-        {showHeader && <Header />}
+        <Header />
+        {showNavigation && <NavigationMenu />}
       </div>
     </div>
   )

@@ -7,6 +7,7 @@ frontend:
         - pnpm install --frozen-lockfile
     build:
       commands:
+        - export NEXT_PUBLIC_SHOW_NAVIGATION=false
         - pnpm run build
   artifacts:
     baseDirectory: .next
@@ -21,6 +22,3 @@ frontend:
       headers:
         - key: 'Cache-Control'
           value: 'public, max-age=0, must-revalidate'
-  environment:
-    variables:
-      NEXT_PUBLIC_SHOW_HEADER: 'false'
