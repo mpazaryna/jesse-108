@@ -8,8 +8,13 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import Link from "next/link"
+import { mainNavItems } from "@/lib/navigation"
+import { usePathname } from "next/navigation"
+import { cn } from "@/lib/utils"
 
 export function SiteNav() {
+  const pathname = usePathname()
+
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -19,30 +24,18 @@ export function SiteNav() {
       </PopoverTrigger>
       <PopoverContent className="w-56" align="start">
         <nav className="space-y-2">
-          <Link 
-            href="/" 
-            className="flex w-full items-center py-2 px-3 rounded-md hover:bg-muted transition-colors"
-          >
-            Home
-          </Link>
-          <Link 
-            href="/instructors" 
-            className="flex w-full items-center py-2 px-3 rounded-md hover:bg-muted transition-colors"
-          >
-            Instructors
-          </Link>
-          <Link 
-            href="/sponsors" 
-            className="flex w-full items-center py-2 px-3 rounded-md hover:bg-muted transition-colors"
-          >
-            Sponsors
-          </Link>
-          <Link 
-            href="/about" 
-            className="flex w-full items-center py-2 px-3 rounded-md hover:bg-muted transition-colors"
-          >
-            About
-          </Link>
+          {mainNavItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={cn(
+                "flex w-full items-center py-2 px-3 rounded-md hover:bg-muted transition-colors",
+                pathname === item.href && "bg-muted"
+              )}
+            >
+              {item.title}
+            </Link>
+          ))}
         </nav>
       </PopoverContent>
     </Popover>

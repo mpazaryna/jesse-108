@@ -33,8 +33,7 @@ export async function getAllSponsors(): Promise<Sponsor[]> {
     })
   )
 
-  // Sort sponsors alphabetically by name
-  return sponsors.sort((a, b) => a.name.localeCompare(b.name))
+  return sponsors
 }
 
 export async function getSponsorById(id: string): Promise<Sponsor | undefined> {

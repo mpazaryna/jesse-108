@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function SponsorPage({ params }: Props) {
-  const sponsor = await getSponsorById(await Promise.resolve(params.id))
+  const sponsor = await getSponsorById(params.id)
 
   if (!sponsor) {
     notFound()
