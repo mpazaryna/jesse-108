@@ -7,7 +7,7 @@ frontend:
         - pnpm install --frozen-lockfile
     build:
       commands:
-        - NEXT_PUBLIC_SHOW_NAVIGATION=false pnpm run build
+        - pnpm run build
   artifacts:
     baseDirectory: .next
     files:
