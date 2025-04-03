@@ -7,10 +7,12 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
+  const showHeader = process.env.NEXT_PUBLIC_SHOW_HEADER === 'true'
+
   return (
     <div className="container max-w-5xl mx-auto flex-1 flex flex-col items-center justify-center px-4 md:px-6 space-y-12 py-8">
       <div className="text-center">
-        <Header />
+        {showHeader && <Header />}
       </div>
     </div>
   )
