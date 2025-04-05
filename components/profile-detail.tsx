@@ -50,9 +50,7 @@ export function ProfileDetail({ type, name, website, studio, content }: ProfileD
           )}
         </div>
 
-        <div className="mt-8 space-y-6">
-          {content}
-        </div>
+        {content}
       </article>
     </div>
   )
