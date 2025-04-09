@@ -4,13 +4,14 @@ import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 
 interface Props {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const vendor = await getVendorById(params.id)
+  const { id } = await params
+  const vendor = await getVendorById(id)
   
   if (!vendor) {
     return {
@@ -25,7 +26,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function VendorPage({ params }: Props) {
-  const vendor = await getVendorById(await Promise.resolve(params.id))
+  const { id } = await params
+  const vendor = await getVendorById(id)
 
   if (!vendor) {
     notFound()
