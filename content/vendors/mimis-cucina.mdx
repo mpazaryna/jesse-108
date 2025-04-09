@@ -1,17 +1,55 @@
+import { styled } from 'styled-components'
+
+export const StyledHeading = styled.h2`
+  color: #2c3e50;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e74c3c;
+`
+
+export const StyledList = styled.ul`
+  list-style: none;
+  padding-left: 0;
+  margin: 1rem 0;
+  
+  li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+    
+    &:before {
+      content: "•";
+      color: #e74c3c;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+  }
+`
+
 ---
 name: Mimis Cucina
 website: https://mimiscucina.com
 blurb: A quality provider offering carefully selected products and services. Their presence adds value to our benefit event while supporting our shared mission.
 ---
 
-## About
+<StyledHeading>About</StyledHeading>
 
 I'm local to Howell. Everything I make is homemade with the best ingredients I can find. I have a culinary degree from the NY Restaurant School. I'm a mom of 2 - 21 & 18.
 
-## Where to Find My Products
+<StyledHeading>Where to Find My Products</StyledHeading>
+
+<StyledList>
 - Calgo Gardens Farmers Markets
 - Ola State Park Bakery and General Store
+</StyledList>
 
-## Social Media
+<StyledHeading>Social Media</StyledHeading>
+
+<StyledList>
 - Instagram: Mimi's_Cucina
 - Facebook: Mimi's Cucina
+</StyledList>
