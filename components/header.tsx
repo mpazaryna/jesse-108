@@ -20,6 +20,14 @@ export function Header() {
         >
           Download Flyer
         </a>
+        <a
+          href="https://mda.donordrive.com/index.cfm?fuseaction=donordrive.personalCampaign&participantID=76958"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+        >
+          Donate Now
+        </a>
       </div>
     </div>
   )
