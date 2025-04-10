@@ -5,13 +5,14 @@ import { Metadata } from "next"
 import { MDXRemote } from "next-mdx-remote/rsc"
 
 interface Props {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const section = getAboutSectionById(params.id)
+  const { id } = await params
+  const section = getAboutSectionById(id)
   
   if (!section) {
     return {
@@ -26,7 +27,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function AboutSectionPage({ params }: Props) {
-  const section = getAboutSectionById(params.id)
+  const { id } = await params
+  const section = getAboutSectionById(id)
 
   if (!section) {
     notFound()
