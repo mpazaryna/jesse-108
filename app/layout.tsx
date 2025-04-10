@@ -4,8 +4,8 @@ import { SiteHeader } from "@/components/site-header"
 import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata = {
-  title: "My Event",
-  description: "A simple two-page site for my event",
+  title: "Jesse 108",
+  description: "A fundraiser for Jesse",
   generator: 'v0.dev'
 }
 
