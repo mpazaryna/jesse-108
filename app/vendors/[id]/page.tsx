@@ -52,7 +52,24 @@ export default async function VendorPage({ params }: Props) {
       name={vendor.name}
       website={vendor.website}
       content={
-        <div className="grid md:grid-cols-2 gap-8 items-start">
+        galleryContent ? (
+          <div className="grid md:grid-cols-2 gap-8 items-start">
+            <div className="prose dark:prose-invert">
+              {textContent && (
+                <MDXRemote
+                  source={textContent}
+                  components={components}
+                />
+              )}
+            </div>
+            <div className="md:sticky md:top-24">
+              <MDXRemote
+                source={galleryContent}
+                components={components}
+              />
+            </div>
+          </div>
+        ) : (
           <div className="prose dark:prose-invert">
             {textContent && (
               <MDXRemote
@@ -61,15 +78,7 @@ export default async function VendorPage({ params }: Props) {
               />
             )}
           </div>
-          <div className="md:sticky md:top-24">
-            {galleryContent && (
-              <MDXRemote
-                source={galleryContent}
-                components={components}
-              />
-            )}
-          </div>
-        </div>
+        )
       }
     />
   )
