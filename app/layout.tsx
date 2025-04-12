@@ -23,8 +23,8 @@ export default function RootLayout({
             <main className="flex-1 flex flex-col">
               {children}
             </main>
-            <footer className="w-full border-t py-4">
-              <div className="container max-w-5xl mx-auto flex justify-center">
+            <footer className="w-full border-t py-6 mt-auto">
+              <div className="container max-w-4xl mx-auto flex justify-center">
                 <p className="text-sm text-muted-foreground">
                   © {new Date().getFullYear()} Hare Aum
                 </p>
