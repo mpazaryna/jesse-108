@@ -8,6 +8,7 @@ interface Vendor {
   website: string
   blurb: string
   content: string
+  showMore?: boolean
 }
 
 export async function getAllVendors(): Promise<Vendor[]> {
@@ -39,7 +40,8 @@ export async function getAllVendors(): Promise<Vendor[]> {
         name: frontmatter.name || '',
         website: frontmatter.website || '',
         blurb: frontmatter.blurb || '',
-        content: content.trim()
+        content: content.trim(),
+        showMore: frontmatter.showMore === 'true'
       } as Vendor
     })
   )

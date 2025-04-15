@@ -16,6 +16,7 @@ export default async function InstructorsPage() {
               name={instructor.name}
               description={instructor.blurb}
               linkPath="instructors"
+              showMore={instructor.showMore}
             />
           ))}
         </div>

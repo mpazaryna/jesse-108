@@ -10,6 +10,7 @@ interface Instructor {
   studioUrl: string
   blurb: string
   content: string // Changed from any to string since we'll store the raw content
+  showMore?: boolean
 }
 
 export async function getAllInstructors(): Promise<Instructor[]> {
@@ -47,7 +48,8 @@ export async function getAllInstructors(): Promise<Instructor[]> {
         studio: frontmatter.studio || '',
         studioUrl: frontmatter.studioUrl || '',
         blurb: frontmatter.blurb || '',
-        content: content.trim()
+        content: content.trim(),
+        showMore: frontmatter.showMore === 'true'
       } as Instructor
 
       console.log(`Created instructor object for ${filename}:`, {
