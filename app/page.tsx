@@ -67,6 +67,12 @@ export default function Home() {
           Enjoy a vibrant marketplace featuring handmade goods, delicious bites, and holistic offerings. Lunch is available from the incredible Tulip Tree Café just steps away.
         </p>
 
+        <div className="mt-8 mb-6 p-3 bg-secondary/50 rounded-md">
+          <p className="italic">
+            <span className="font-semibold">Special Feature:</span> Live music throughout the event by <a href="https://www.facebook.com/p/Lorrie-Tomlinson-Music-100075722182080/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Lorrie Tomlinson</a>
+          </p>
+        </div>
+
         <h2 className="text-2xl font-bold mt-8">
           <a href="/instructors" className="hover:underline">
             Our Teaching Collective:
