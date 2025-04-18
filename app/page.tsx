@@ -67,7 +67,11 @@ export default function Home() {
           Enjoy a vibrant marketplace featuring handmade goods, delicious bites, and holistic offerings. Lunch is available from the incredible Tulip Tree Café just steps away.
         </p>
 
-        <h2 className="text-2xl font-bold mt-8">Our Teaching Collective:</h2>
+        <h2 className="text-2xl font-bold mt-8">
+          <a href="/instructors" className="hover:underline">
+            Our Teaching Collective:
+          </a>
+        </h2>
         <ul className="list-none grid grid-cols-1 md:grid-cols-3 gap-2 mt-4">
           <li>Manuel Garza Hoelscher</li>
           <li>Matthew Pazaryna</li>
@@ -82,7 +86,11 @@ export default function Home() {
           <li>Kathleen Roskos</li>
         </ul>
 
-        <h2 className="text-2xl font-bold mt-8">With Deep Gratitude to Our Sponsors:</h2>
+        <h2 className="text-2xl font-bold mt-8">
+          <a href="/sponsors" className="hover:underline">
+            With Deep Gratitude to Our Sponsors:
+          </a>
+        </h2>
         <ul className="list-none grid grid-cols-1 md:grid-cols-3 gap-2 mt-4">
           <li>Tulip Tree Café</li>
           <li>Honey Suckle Nectary</li>
@@ -94,7 +102,11 @@ export default function Home() {
           <li>Renarde Salon</li>
         </ul>
 
-        <h2 className="text-2xl font-bold mt-8">Local Vendor Line-Up:</h2>
+        <h2 className="text-2xl font-bold mt-8">
+          <a href="/vendors" className="hover:underline">
+            Local Vendor Line-Up:
+          </a>
+        </h2>
         <ul className="list-none grid grid-cols-1 md:grid-cols-3 gap-2 mt-4">
           <li>Juice Basin</li>
           <li>Belo Bakes</li>
