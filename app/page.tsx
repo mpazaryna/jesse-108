@@ -43,7 +43,7 @@ export default function Home() {
 
       <div className="prose prose-lg max-w-none text-center">
         <p className="text-xl">
-          Please join us for a heartfelt day of movement, mindfulness, and community as <a href="https://www.yogablisslove.com/">YogaBlissLove</a> hosts a Muscular Dystrophy Fundraiser in memory of my beloved son Jesse, and in honor of my son Ayler, who continues to inspire us every day.
+          Please join us for a heartfelt day of movement, mindfulness, and community as <a href="https://www.yogablisslove.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">YogaBlissLove</a> hosts a Muscular Dystrophy Fundraiser in memory of my beloved son Jesse, and in honor of my son Ayler, who continues to inspire us every day.
         </p>
 
         <p>
