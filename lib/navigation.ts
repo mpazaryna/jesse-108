@@ -20,4 +20,8 @@ export const mainNavItems: NavItem[] = [
     title: "Vendors",
     href: "/vendors",
   },
+  {
+    title: "Artists",
+    href: "/artists",
+  },
 ] 
