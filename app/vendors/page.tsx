@@ -16,6 +16,8 @@ export default async function VendorsPage() {
               name={vendor.name}
               description={vendor.blurb}
               linkPath="vendors"
+              website={vendor.website}
+              showMore={vendor.showMore}
             />
           ))}
         </div>

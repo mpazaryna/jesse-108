@@ -2,6 +2,7 @@ import { getSponsorById } from '@/lib/sponsors'
 import { ProfileDetail } from '@/components/profile-detail'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
+import { MDXRemote } from 'next-mdx-remote/rsc'
 
 interface Props {
   params: {
@@ -36,7 +37,19 @@ export default async function SponsorPage({ params }: Props) {
       type="sponsors"
       name={sponsor.name}
       website={sponsor.website}
-      content={sponsor.content}
+      content={
+        <div className="prose dark:prose-invert">
+          <MDXRemote 
+            source={sponsor.content}
+            options={{
+              parseFrontmatter: false,
+              mdxOptions: {
+                development: process.env.NODE_ENV === 'development'
+              }
+            }}
+          />
+        </div>
+      }
     />
   )
 } 

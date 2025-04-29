@@ -62,6 +62,52 @@ const config: Config = {
   				ring: 'hsl(var(--sidebar-ring))'
   			}
   		},
+  		typography: {
+  			DEFAULT: {
+  				css: {
+  					maxWidth: 'none',
+  					color: 'hsl(var(--foreground))',
+  					h2: {
+  						color: 'hsl(var(--foreground))',
+  						fontSize: '1.5rem',
+  						marginTop: '1.5rem',
+  						marginBottom: '0.75rem',
+  						fontWeight: '600',
+  						letterSpacing: '-0.025em',
+  						borderBottom: '1px solid hsl(var(--border))',
+  						paddingBottom: '0.375rem',
+  					},
+  					p: {
+  						marginTop: '0.75rem',
+  						marginBottom: '0.75rem',
+  						lineHeight: '1.6',
+  					},
+  					ul: {
+  						marginTop: '0.75rem',
+  						marginBottom: '0.75rem',
+  						paddingLeft: '1.25rem',
+  					},
+  					li: {
+  						marginTop: '0.25rem',
+  						marginBottom: '0.25rem',
+  						lineHeight: '1.5',
+  					},
+  					'li::marker': {
+  						color: 'hsl(var(--primary))',
+  						opacity: 0.6,
+  					},
+  					a: {
+  						color: 'hsl(var(--primary))',
+  						textDecoration: 'none',
+  						fontWeight: '500',
+  						'&:hover': {
+  							color: 'hsl(var(--primary))',
+  							opacity: 0.8,
+  						},
+  					},
+  				},
+  			},
+  		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
@@ -91,6 +137,6 @@ const config: Config = {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };
 export default config;

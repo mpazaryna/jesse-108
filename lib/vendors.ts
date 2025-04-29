@@ -7,7 +7,8 @@ interface Vendor {
   name: string
   website: string
   blurb: string
-  content: React.ReactNode
+  content: string
+  showMore?: boolean
 }
 
 export async function getAllVendors(): Promise<Vendor[]> {
@@ -20,15 +21,27 @@ export async function getAllVendors(): Promise<Vendor[]> {
       const fullPath = path.join(vendorsDirectory, filename)
       const fileContents = fs.readFileSync(fullPath, 'utf8')
 
-      const { frontmatter, content } = await compileMDX({
-        source: fileContents,
-        options: { parseFrontmatter: true }
+      // Split the content to get frontmatter and the rest
+      const parts = fileContents.split('---')
+      const frontmatterStr = parts[1]
+      // Join the remaining parts back together to preserve all content sections
+      const content = parts.slice(2).join('---')
+      
+      const frontmatter: Record<string, string> = {}
+      frontmatterStr.trim().split('\n').forEach(line => {
+        const [key, ...valueParts] = line.split(':')
+        if (key && valueParts.length > 0) {
+          frontmatter[key.trim()] = valueParts.join(':').trim()
+        }
       })
 
       return {
         id,
-        ...frontmatter,
-        content
+        name: frontmatter.name || '',
+        website: frontmatter.website || '',
+        blurb: frontmatter.blurb || '',
+        content: content.trim(),
+        showMore: frontmatter.showMore === 'true'
       } as Vendor
     })
   )

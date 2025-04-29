@@ -16,6 +16,8 @@ export default async function SponsorsPage() {
               name={sponsor.name}
               description={sponsor.blurb}
               linkPath="sponsors"
+              website={sponsor.website}
+              showMore={sponsor.showMore}
             />
           ))}
         </div>

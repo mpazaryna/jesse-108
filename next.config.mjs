@@ -1,3 +1,14 @@
+import createMDX from '@next/mdx'
+
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+    providerImportSource: "@mdx-js/react",
+    jsx: true,
+  },
+})
+
 let userConfig = undefined
 try {
   userConfig = await import('./v0-user-next.config')
@@ -21,6 +32,7 @@ const nextConfig = {
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
+  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
 }
 
 mergeConfig(nextConfig, userConfig)
@@ -45,4 +57,4 @@ function mergeConfig(nextConfig, userConfig) {
   }
 }
 
-export default nextConfig
+export default withMDX(nextConfig)

@@ -21,7 +21,7 @@ export const mainNavItems: NavItem[] = [
     href: "/vendors",
   },
   {
-    title: "About",
-    href: "/about",
+    title: "Artists",
+    href: "/artists",
   },
 ] 

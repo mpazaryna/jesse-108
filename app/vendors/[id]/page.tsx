@@ -2,15 +2,19 @@ import { getVendorById } from '@/lib/vendors'
 import { ProfileDetail } from '@/components/profile-detail'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
+import { MDXRemote } from 'next-mdx-remote/rsc'
+import { VendorImage } from '@/components/vendor-image'
+import { VendorGallery } from '@/components/vendor-gallery'
 
 interface Props {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const vendor = await getVendorById(params.id)
+  const { id } = await params
+  const vendor = await getVendorById(id)
   
   if (!vendor) {
     return {
@@ -25,18 +29,57 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function VendorPage({ params }: Props) {
-  const vendor = await getVendorById(await Promise.resolve(params.id))
+  const { id } = await params
+  const vendor = await getVendorById(id)
 
   if (!vendor) {
     notFound()
   }
+
+  const components = {
+    VendorImage,
+    VendorGallery
+  }
+
+  // Split content at the '---' markers after the frontmatter
+  const parts = vendor.content.split('---').filter(Boolean)
+  const textContent = parts[0]?.trim()
+  const galleryContent = parts[1]?.trim()
 
   return (
     <ProfileDetail
       type="vendors"
       name={vendor.name}
       website={vendor.website}
-      content={vendor.content}
+      content={
+        galleryContent ? (
+          <div className="grid md:grid-cols-2 gap-8 items-start">
+            <div className="prose dark:prose-invert">
+              {textContent && (
+                <MDXRemote
+                  source={textContent}
+                  components={components}
+                />
+              )}
+            </div>
+            <div className="md:sticky md:top-24">
+              <MDXRemote
+                source={galleryContent}
+                components={components}
+              />
+            </div>
+          </div>
+        ) : (
+          <div className="prose dark:prose-invert">
+            {textContent && (
+              <MDXRemote
+                source={textContent}
+                components={components}
+              />
+            )}
+          </div>
+        )
+      }
     />
   )
 } 
