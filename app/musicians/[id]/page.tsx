@@ -1,10 +1,10 @@
-import { getArtistById } from '@/lib/artists'
+import { getMusicianById } from '@/lib/musicians'
 import { ProfileDetail } from '@/components/profile-detail'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
-import { ArtistImage } from '@/components/artist-image'
-import { ArtistGallery } from '@/components/artist-gallery'
+import { MusicianImage } from '@/components/musician-image'
+import { MusicianGallery } from '@/components/musician-gallery'
 
 interface Props {
   params: Promise<{
@@ -14,43 +14,43 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params
-  const artist = await getArtistById(id)
+  const musician = await getMusicianById(id)
 
-  if (!artist) {
+  if (!musician) {
     return {
-      title: 'Artist Not Found'
+      title: 'Musician Not Found'
     }
   }
 
   return {
-    title: artist.name,
-    description: artist.blurb
+    title: musician.name,
+    description: musician.blurb
   }
 }
 
-export default async function ArtistPage({ params }: Props) {
+export default async function MusicianPage({ params }: Props) {
   const { id } = await params
-  const artist = await getArtistById(id)
+  const musician = await getMusicianById(id)
 
-  if (!artist) {
+  if (!musician) {
     notFound()
   }
 
   const components = {
-    ArtistImage,
-    ArtistGallery
+    MusicianImage,
+    MusicianGallery
   }
 
   // Split content at the '---' markers after the frontmatter
-  const parts = artist.content.split('---').filter(Boolean)
+  const parts = musician.content.split('---').filter(Boolean)
   const textContent = parts[0]?.trim()
   const galleryContent = parts[1]?.trim()
 
   return (
     <ProfileDetail
-      type="artists"
-      name={artist.name}
-      website={artist.website}
+      type="musicians"
+      name={musician.name}
+      website={musician.website}
       content={
         galleryContent ? (
           <div className="grid md:grid-cols-2 gap-8 items-start">

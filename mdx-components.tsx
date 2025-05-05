@@ -4,6 +4,8 @@ import { VendorImage } from '@/components/vendor-image'
 import { VendorGallery } from '@/components/vendor-gallery'
 import { ArtistImage } from '@/components/artist-image'
 import { ArtistGallery } from '@/components/artist-gallery'
+import { MusicianImage } from '@/components/musician-image'
+import { MusicianGallery } from '@/components/musician-gallery'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -13,6 +15,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     VendorGallery: (props) => <VendorGallery {...props} />,
     ArtistImage: (props) => <ArtistImage {...props} />,
     ArtistGallery: (props) => <ArtistGallery {...props} />,
+    MusicianImage: (props) => <MusicianImage {...props} />,
+    MusicianGallery: (props) => <MusicianGallery {...props} />,
     h2: (props) => (
       <h2
         {...props}
