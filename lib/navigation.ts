@@ -23,9 +23,5 @@ export const mainNavItems: NavItem[] = [
   {
     title: "Musicians",
     href: "/musicians",
-  },
-  {
-    title: "Artists",
-    href: "/artists",
-  },
+  }
 ] 

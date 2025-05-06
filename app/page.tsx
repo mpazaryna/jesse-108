@@ -121,7 +121,7 @@ export default function Home() {
           <li>Happy Bellies Jars</li>
           <li>Bee Stamped by Dawn</li>
           <li>Mimi's Cucina</li>
-          <li>Kathleen Trevinka – Artist</li>
+          <li>Kathy Trevino – Artist</li>
           <li>Beadsbro Workshop</li>
         </ul>
 
